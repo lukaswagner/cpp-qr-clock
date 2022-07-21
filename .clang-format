@@ -1,0 +1,24 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: AlwaysBreak
+BinPackArguments: false
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: Empty
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Allman
+BreakConstructorInitializers: BeforeComma
+ColumnLimit: 80
+IncludeBlocks: Regroup
+IncludeCategories:
+    - Regex: '<[^\.]*>'
+      Priority: 1
+    - Regex: '<.*/gl\.h>'
+      Priority: 2
+    - Regex: '<.*\..*>'
+      Priority: 3
+    - Regex: '".*"'
+      Priority: 4
+IndentCaseLabels: false
+IndentWidth: 4
+PenaltyReturnTypeOnItsOwnLine: 1000
+PointerAlignment: Left
+UseTab: false
