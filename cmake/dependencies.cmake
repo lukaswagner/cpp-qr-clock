@@ -29,5 +29,13 @@ else()
     message(STATUS "GLFW already exists")
 endif()
 
+if(NOT EXISTS ${dependency_dir}/include/qrencode.h)
+    message(STATUS "Building libqrencode")
+    git(libqrencode https://github.com/fukuchi/libqrencode v4.1.1)
+    build(libqrencode "-DWITH_TOOLS=OFF;-DWITHOUT_PNG=ON")
+else()
+    message(STATUS "libqrencode already exists")
+endif()
+
 # clean up
 file(REMOVE_RECURSE ${src_dir})

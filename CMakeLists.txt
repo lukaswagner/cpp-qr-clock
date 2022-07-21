@@ -22,6 +22,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 find_package(glbinding REQUIRED)
 find_package(glfw3 REQUIRED)
+find_library(qrencode PATHS ${dep_dir}/lib NAMES qrencode.lib)
 
 include_directories(${dep_dir}/include)
 
@@ -35,9 +36,15 @@ set(sources
 # executables
 add_executable(clock ${sources})
 target_include_directories(clock PRIVATE ${header_dir})
-target_link_libraries(clock PRIVATE glfw glbinding::glbinding)
+target_link_libraries(clock PRIVATE
+    glfw
+    glbinding::glbinding
+    glbinding::glbinding-aux
+    ${qrencode})
 
 # dlls for runtime
 if(WIN32)
     include(cmake/helpers.cmake)
+    addDep(glbinding)
+    addDep(glbinding-aux)
 endif()
